@@ -15,15 +15,17 @@ python:
 env:
   - ANSIBLE_VER=2.5.2
   - ANSIBLE_VER=2.6.1
+  - FOO=123
+  - FOO=456
 
 sudo: true
 
 stage: test
 script:
-  - echo "Test $ANSIBLE_VER"
+  - echo "Test $ANSIBLE_VER ; $FOO"
 
 jobs:
   include:
     - stage: lint
       script:
-        - echo "Lint $ANSIBLE_VER"
+        - echo "Lint $ANSIBLE_VER ; $FOO"
