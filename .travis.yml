@@ -1,0 +1,29 @@
+
+notifications:
+  email: false
+
+language: python
+
+stages:
+  - lint
+  - test
+
+python:
+  - 3.6
+  - 2.7
+
+env:
+  - ANSIBLE_VER=2.5.2
+  - ANSIBLE_VER=2.6.1
+
+sudo: true
+
+stage: test
+script:
+  - echo "Test $ANSIBLE_VER"
+
+jobs:
+  include:
+    - stage: lint
+      script:
+        - echo "Lint $ANSIBLE_VER"
