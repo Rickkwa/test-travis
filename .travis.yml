@@ -17,6 +17,12 @@ env:
     FOO: 123
   - ANSIBLE_VER: 2.6.1
     FOO: 456
+    
+matrix:
+  include:
+    env:
+      - BAR=111
+      - BAR=222
 
 sudo: true
 
