@@ -2,36 +2,23 @@
 notifications:
   email: false
 
-language: python
 
-stages:
-  - lint
-  - test
-
-python:
-  - 3.6
-  - 2.7
-
-env:
-  - ANSIBLE_VER: 2.5.2
-    FOO: 123
-  - ANSIBLE_VER: 2.6.1
-    FOO: 456
-    
 matrix:
   include:
-    env:
-      - BAR=111
-      - BAR=222
-
-sudo: true
-
-stage: test
-script:
-  - echo "Test $ANSIBLE_VER ; $FOO"
-
-jobs:
-  include:
-    - stage: lint
+    - language: node_js
+      node_js: "6"
+      env:
+        - FOO=123
+        - FOO=456
       script:
-        - echo "Lint $ANSIBLE_VER ; $FOO"
+        - echo $FOO
+   
+    - language: python
+      python:
+        - 2.7
+        - 3.6
+      env:
+        - BAR=1234
+        - BAR=5678
+      script:
+        - echo $bar
